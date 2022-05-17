@@ -93,8 +93,8 @@ A tkinter thread has nothing to do with either the threads created using Python'
 threading module or a subprocess created in Python's subprocess module. 
 Tkinter threads are created by the tkinter module. Tkinter threads **do not** run concurrently. 
 
-Understanding that Tkinter creates its own threads is crucial to understanding how to write 
-correct Tkinter code.
+Understanding that Tkinter creates its own threads which are capable of creating race conditions is
+crucial to understanding how to write correct Tkinter code.
 
 #### A Correctly Designed Exception Handler
 
@@ -117,6 +117,6 @@ Tkinter handles the exception by calling `_report_exception()`. This removes the
 The removed exception is passed to `report_callback_exception` and that calls 
 Python's `traceback. print_exception` to print the exception on stderr. 
 
-It is not clear why TKinter supresses Python's excellent exception handling. Full Python fuctionality can be restored by overriding `CallWrapper` and removing the try-except statements handler. 
+It is not clear why TKinter supresses Python's exception handling. Full Python fuctionality can be restored by overriding `CallWrapper` and removing the try-except statements handler. 
 
 `CallWrapper` is marked as a private class although without a leading underscore. No gross problems were noticed as a result of this override although does not preclude the possibility of unseen edge cases. 

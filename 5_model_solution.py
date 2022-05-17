@@ -68,4 +68,9 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    # Trying to pass 'None' to sys.exit has stopped working for reasons which have not yet been discovered.
+    # sys.exit(main())
+    
+    main()
+    # Tk does not relinquish control unless sys.exit runs. (Not clear if it is tkinter, Tk, or Tcl)
+    sys.exit()
